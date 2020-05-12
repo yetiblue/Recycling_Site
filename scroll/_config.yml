@@ -1,0 +1,378 @@
+name: BeerCamp at SXSW 2011
+
+pygments: true
+
+teams:
+  
+  - name: '2 girls, 3 guys and a&nbsp;cup.'
+    players:
+      - name: Kerry Gunther
+        twitter: kerrygunther
+      - name: Jim Basio
+        twitter: jimboi
+      - name: Tanya Bodnya
+      - name: Dario Tadic
+      - name: Nastya Loskutova
+  
+  - name: The Irish Hooters
+    players:
+      - name: Patrick Haney
+        twitter: notasausage
+      - name: J Cornelius
+        twitter: jc
+      - name: Matt Downey
+        twitter: mattdowney
+      - name: Jenna Marino
+        twitter: jennamarino
+      - name: Adam Little
+        twitter: adam_little
+  
+  - name: Just the Flip
+    players:
+      - name: Rusty Walters
+        twitter: russwalters
+      - name: Kim Richie
+        twitter: kimberwom
+      - name:   Ken Peluso
+      - name: Dave Wassell
+      - name: Cara Citino
+  
+  - name: Kickstarter
+    players:
+      - name: Andrew Cornett
+        twitter: amotion
+      - name: Samuel Cole
+        twitter: samuelcole
+      - name: Fred Benenson
+        twitter: mecredis
+      - name: Charles Adler
+        twitter: cadler
+      - name: Brett Camper
+        twitter: professorlemeza
+
+  - name: GSP
+    players:
+      - name: Mike Geiger
+        twitter: tastytruth
+      - name: Carey Head
+        twitter: fourminutesong
+      - name: Mike Davidson
+        twitter: davidsonmike
+      - name: Derek Richmond
+        twitter: designagnostic
+      - name: Peter Albrycht
+  
+  - name: London calling
+    players:
+      - name: Charlie Osmond
+        twitter: cosmond
+      - name: Alliott Cole
+        twitter: alliott
+      - name: Ben Barnes
+      - name: Pete Cherry
+      - name: Jacob Kestner
+        twitter: jacobkestner
+  
+  - name: Team What?!?
+    players:
+      - name: John Zulim
+      - name: Michael McCollough
+      - name: Eric Josselyn
+      - name: Justin Fae
+      - name: Chang Cho
+
+  - name: Loch Ness
+    players:
+      - name: Rob Sternenberg
+        twitter: foodtrailersatx
+      - name: Tony Yamanaka
+      - name: Christina Conklin
+      - name: Darrin Jensen
+      - name: Jason Gray
+  
+  - name: Das Boots
+    players:
+      - name: Juan Moran
+      - name: Ralf Garcia
+      - name: Remington Ruiz
+      - name: Tyler McEwen
+      - name: Jason Fialkoff
+  
+  - name: Cinco Trouble
+    players:
+      - name: Sandra Fabian
+        twitter: sanfab44
+      - name: Jesse Ramirez
+      - name: Charles Williams
+      - name: Amy Zamora
+      - name: Gina Romero
+  
+  - name: Who's cider you on?
+    players:
+      - name: Ian Ochiltree
+        twitter: ianochiltree
+      - name: Ally Stuart
+        twitter: EtAlly
+      - name: Matt Golding
+        twitter: mattgolding
+      - name: Chris Quigley
+        twitter: rubber_republic
+      - name: Alex Pitkin
+        twitter: Pitkin
+  
+  - name: Beadenomics
+    players:
+      - name: Brian Cmiel
+        twitter: Fat_Brian
+      - name: Rickey Brown
+        twitter: Dokopuffs
+      - name: Lauren Gates
+        twitter: LaurieSaurus
+      - name: Keegan Sterling
+        twitter: theguttedfish
+      - name: Shaun Marston
+        twitter: OckyNohara
+  
+  - name: Martin&rsquo;s Mom
+    players:
+      - name: Kevin Smith
+        twitter: ksmith
+      - name: Greg Robleto
+        twitter: robleto
+      - name: Doug Dosberg
+        twitter: dosberg
+      - name: Patrick Woods
+        twitter: hakjoon
+      - name: Justin S.
+        twitter: joeks
+  
+  - name: Designated Drinkers
+    players:
+      - name: M. Jackson Wilkinson
+        twitter: whafro
+      - name: Samara Strauss
+        twitter: sammaarra
+      - name: Heather Ritchie
+        twitter: heatheranne
+      - name: Sachin Agarwal
+        twitter: a4agarwal
+      - name: Vince Chu
+        twitter: vincentchu
+  
+  - name: Liver Let Die
+    players:
+      - name: Derek Bender
+        twitter: derekbender
+      - name: Elizabeth Baranik
+        twitter: elizabethb
+      - name: Derek Kohn
+        twitter: makemealive_dk
+      - name: Matt Dorst
+      - name: Eric Marden
+        twitter: xentek
+  
+  - name: The Slow Children
+    players:
+      - name: Erik Hay
+        twitter: erikthehay
+      - name: Sam Granleese
+        twitter: granleese
+      - name: Brian Merrifield
+        twitter: bboybri
+      - name: Damien Damjanovski
+      - name: Barrie Seppings
+  
+  - name: Fred Durst Society of the Humanities and Arts
+    players:
+      - name: Michele Cummins
+        twitter: SoyMichelada
+      - name: Kollin Brandenburg
+        twitter: HeyYouUpFront
+      - name: Brooke Marcus
+        twitter: YuppieBrooke
+      - name: Alicia Saba
+      - name: Jake Balcom
+
+  - name: Stellas
+    players:
+      - name: Chelsey Salisbury
+        twitter: chelllaaaa
+      - name: Roslynn Castillo
+        twitter: RoslynnCastillo
+      - name: Elizabeth Davis
+      - name: Jennifer Alt
+      - name: Hanna Pendl
+  
+  - name: 10/10s
+    players:
+      - name: Rohan Seth
+        twitter: rohanseth
+      - name: Carlos Whitt
+        twitter: carloswhitt
+      - name: Sara Haider
+        twitter: pandemona
+      - name: Ajit Varma
+      - name: Jesse Shieh
+  
+  - name: move &lt;/aside&gt;
+    players:
+      - name: Mike Brenner
+        twitter: MikeMakes
+      - name: Justin Michaliga
+        twitter: jmichaliga
+      - name: Jerry Biehl
+        twitter: jerrybiehl
+      - name: Lokesh Dhakar
+        twitter: lokeshdhakar
+      - name: Todd Marks
+  
+  - name: Canadian Livers in Training
+    players:
+      - name: Erin Bury
+        twitter: erinbury
+      - name: Lee Dale
+        twitter: smack416
+      - name: Jay Goldman
+        twitter: jaygoldman
+      - name: Matt Rintoul
+        twitter: matt416
+      - name: Kagey Davis
+        twitter: kgdavis
+  
+  - name: Flipsburgh
+    players:
+      - name: Sarah Lamont
+        twitter: seriflafont
+      - name: Emily Brewer
+        twitter: ebrewer
+      - name: Jennifer McLean
+        twitter: jennymclean
+      - name: Guy Gould-Davies
+      - name: Andrew Van Hook
+  
+  - name: Craft Beer Social + Belching Monkey = The Waterboys
+    players:
+      - name: Jim Storer
+        twitter: jimstorer
+      - name: Derek Peplau
+        twitter: peplau
+      - name: Mike Schneider
+        twitter: schneidermike
+      - name: Mike Pascucci
+        twitter: mikepascucci
+      - name: Matt Solar 
+        twitter: mattsolar
+      
+  - name: The yayQuery Sparkleforce
+    players:
+      - name: Alex Sexton
+        twitter: SlexAxton
+      - name: Paul Irish
+        twitter: paul_irish
+      - name: Ben Weatherman
+        twitter: benweatherman
+      - name: Jon Loyens
+      - name: Aaron Forsander 
+  
+  - name: 'Saatchi &amp; Shortlist Los Angeles'
+    players:
+      - name: Justin Bain
+        twitter: jbain75
+      - name: Charlie McBrearty
+        twitter: shortlister
+      - name: Tanya Lesieur
+        twitter: tanyalesieur
+      - name: Vaness McLean
+      - name: David Evans
+        twitter: spyglasscircle
+
+  - name: Team Throat Punch
+    players:
+      - name: Todd Bayliss
+        twitter: dillisquid
+      - name: Stephanie Hay
+        twitter: steph_hay
+      - name: Doug Avery
+        twitter: averyvery
+      - name: Keith Muth
+        twitter: keithmuth
+      - name: Chris Castiglione
+        twitter: castig
+
+  - name: SD Mafia
+    players:
+      - name: Chris McCann
+        twitter: mccannatron
+      - name: Brendan McManus
+        twitter: founderb
+      - name: Gagan Biyani
+        twitter: gaganbiyani
+      - name: Jessica Ford
+      - name: Matt Sandler
+
+  - name: Nerds in Herds
+    players:
+      - name: DJ Saul
+        twitter: darienjay100
+      - name: Audrey Matthias
+        twitter: amatthias
+      - name: Zvi Band
+        twitter: skeevis
+      - name: Dan Dzombak
+      - name: Zach Goodwin
+  
+  - name: Geeks Adventure Club
+    players:
+      - name: Antoine Butler
+        twitter: aebsr
+      - name: Andrew Cohen
+        twitter: cohenspire
+      - name: Corey Greeneltch
+        twitter: blanksky
+      - name: Reid Williams
+      - name: Stuart Kershaw
+
+  - name: The PR&rsquo;UF is on fire
+    players:
+      - name: Varick Rosete
+        twitter: varick
+      - name: Dennis Eusebio
+        twitter: thoughtntheory
+      - name: Pete Cochrane
+      - name: Jen Hyde
+      - name: Bruce Wayne
+
+  - name: UserVoice
+    players:
+      - name: Evan Hamilton
+        twitter: evanhamilton
+      - name: Daniel Kan
+        twitter: danielkan
+      - name: Mark Martin
+        twitter: assplecake
+      - name: Scott Rutherford
+      - name: Jonathan Novak
+
+  - name: Ze Germans
+    players:
+      - name: Martijn van Erp
+        twitter: martijnvanerp
+      - name: Wietse Hage
+        twitter: wietsehage
+      - name: Johan Kuijt
+        twitter: johankuijt
+      - name: Joris Verbogt
+      - name: Peter van Grieken
+
+  # - name: TEAMNAME
+  #   players:
+  #     - name: PLAYER1
+  #       twitter: TWITTER1
+  #     - name: PLAYER2
+  #       twitter: TWITTER2
+  #     - name: PLAYER3
+  #       twitter: TWITTER3
+  #     - name: PLAYER4
+  #       twitter: TWITTER4
+  #     - name: PLAYER5
+  #       twitter: TWITTER5

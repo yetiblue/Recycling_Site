@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="scroll/css/style2.css" />
+<meta charset="utf-8">
+<title>Stop Recycling</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+*{
+  margin: 0;
+  padding: 0;
+}
+
+</style>
+</head>
+
+<body id="firstpagebody">
+  <div id="firstpagesearchbar">
+    <!-- The searchbar itself -->
+    <div id="firstpagebox">
+      <h2>How many plastic bottles are sold every minute?</h2>
+    </div>
+    <button id="firstpagebutton"type="button">Find Out</button>
+  </div>
+  <div id="firstpagepic">
+    <img src="scroll/plastic.png">
+  </div>
+</body>
+
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#firstpagebox").load("million2.html");
+    });
+});
+</script>
+
+</html>

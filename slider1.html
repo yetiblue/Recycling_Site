@@ -1,0 +1,117 @@
+
+<html>
+<head>
+<link rel="stylesheet" href="scroll/css/style2.css" />
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Comfortaa:wght@300;500&family=Lato&family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&family=Roboto:wght@500&display=swap" rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+</head>
+
+<body id="sliderbody">
+  <form id="mainForm_1" action="/submit"class="MainForm" method="post">
+    <!-- First box with the slider -->
+    <div id="sliderdiv1">
+      <div id=slidercenter1>
+        <li class="mainForm">
+          <h1 for="minbeds" class="mainForm" > How Environmentally Important <br> Do You Think Recycling Is?</h1>
+          <!-- min beds displays the value in the dropdown -->
+            <select name="minbeds" id="minbeds">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+            <input type='hidden' class="mainForm" id="selectedNumber" name="selectedNumber" />
+            <a class="ct-btn-scroll ct-js-btn-scroll" href="#sliderdiv2"><img style=""alt="Arrow Down Icon" src="https://raw.githubusercontent.com/solodev/scroll-down-anchor/master/images/arrow-down-1.png"></a>
+        </li>
+      </div>
+    </div>
+
+    <div id="sliderdiv2">
+      <!-- Second box with the age question -->
+      <div id=slidertexts>
+        <h1 > Enter <br>Your <br>Age </h1>
+        <input id="sliderage"type="text" name="age"><br>
+        <a class="ct-btn-scroll2 ct-js-btn-scroll" id="arrow3"href="#sliderdiv3"><img alt="Arrow Down Icon" src="https://raw.githubusercontent.com/solodev/scroll-down-anchor/master/images/arrow-down-1.png"></a>
+      </div>
+    </div>
+
+    <div id="sliderdiv3">
+      <!-- Third box with the two buttons -->
+      <h1> Does Recycling Make You Feel Good?</h1>
+        <input type="button" name="button1"id="button1"value="Yeah!" onclick="hiddenresponse('yes')">
+        <div style=""id="secondbutton">
+          <input type="button" name="button2"id="button2"value="Not Really" onclick="hiddenresponse2('no')">
+        </div>
+        <input type='hidden' class="mainForm" id="buttonresponse" name="buttonresponse" />
+        <input type='hidden' class="mainForm" id="buttonresponse2" name="buttonresponse2" />
+      <a class="ct-btn-scroll2 ct-js-btn-scroll" id="arrow2"href="#sliderdiv4"><img alt="Arrow Down Icon" src="https://raw.githubusercontent.com/solodev/scroll-down-anchor/master/images/arrow-down-1.png"></a>
+    </div>
+
+    <div id="sliderdiv4">
+      <input id="saveForm" style=""class="mainForm" type="submit" value="Continue" />
+    </div>
+  </form>
+</body>
+
+<script>
+  // Sending value for the form buttons
+  function hiddenresponse(val) {
+      document.getElementById('buttonresponse').value = val;
+      return true;
+  }
+  function hiddenresponse2(val) {
+      document.getElementById('buttonresponse2').value = val;
+      return true;
+  }
+  // End button values
+  $(function() {
+      var select = $("#minbeds");
+      var slider = $("<div id='slider'></div>").insertAfter(select).slider({
+        min: 1,
+        max: 10,
+        range: "min",
+        step: 0.5,
+        value: select[0].selectedIndex + 1,
+        slide: function(event, ui) {
+          select[0].selectedIndex = ui.value - 1;
+          $("#selectedNumber").val( ui.value - 1 );
+          console.log("Slider value: " + (ui.value - 1) );
+          console.log("Hidden field value: " + $("#selectedNumber").val());
+        }
+      });
+
+      $("#minbeds").change(function() {
+        slider.slider("value", this.selectedIndex + 1);
+        var selection = $("#slider").slider("value");
+        console.log("Slider value: " + selection);
+        $("#selectedNumber").val( selection );
+        console.log("Hidden field value: " + $("#selectedNumber").val());
+      });
+  });
+  // smooth scrolling between anchors
+  $(document).ready(function(){
+    $("a").on('click', function(event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+        var hash = this.hash;
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function(){
+          window.location.hash = hash;
+        });
+      }
+    });
+});
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="scroll/css/style2.css" />
+<head>
+</head>
+
+<body id="millionbody">
+<div>
+  <div id="millionvideo">
+    <video autoplay muted loop id="myVideo">
+      <source src="intro.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+<div id="millionwhitespace"></div>
+<div id="millionresponses">
+  <div id=millionbottle>
+    <img src="bottle.svg">
+  </div>
+
+  <!-- Holds the 3 option buttons and the 'continue' button -->
+  <div id="millionbox">
+      <h1>How Much Plastic Do You Produce? </h1>
+
+       <form action="/guilt" id = 'guiltform'  method="POST">
+          <div id="millionbuttons">
+            <input type="button" name="guiltbutton1"id="millionbutton1"value="Very Little" onclick="hiddenresponse('1')">
+            <input type="button" name="guiltbutton2"id="millionbutton2"value="There's Room For Improvement" onclick="hiddenresponse2('2')">
+            <input type="button" name="guiltbutton3"id="millionbutton3"value="Definitely Too Much " onclick="hiddenresponse3('3')">
+          </div>
+  <!-- Allows the buttons in the form to send a value -->
+          <input type='hidden' class="mainForm" id="buttonresponse" name="buttonresponse" />
+          <input type='hidden' class="mainForm" id="buttonresponse2" name="buttonresponse2" />
+          <input type='hidden' class="mainForm" id="buttonresponse3" name="buttonresponse3" />
+          <input type="submit" value="Continue"><br>
+      </form>
+  </div>
+</div>
+<script>
+
+  function hiddenresponse(val) {
+      document.getElementById('buttonresponse').value = val;
+      return true;
+  }
+  function hiddenresponse2(val) {
+      document.getElementById('buttonresponse2').value = val;
+      return true;
+  }
+  function hiddenresponse3(val) {
+      document.getElementById('buttonresponse3').value = val;
+      return true;
+  }
+</script>
+
+</body>
+</html>

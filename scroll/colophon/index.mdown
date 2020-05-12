@@ -1,0 +1,473 @@
+---
+
+layout: colophon
+title: BeerCamp 2011 Colophon
+
+---
+
+### Follow along &rarr; [2011.beercamp.com/colophon](http://2011.beercamp.com/colophon)
+
+### Source available on GitHub &rarr; [github.com/nclud/2011.beercamp.com](http://github.com/nclud/2011.beercamp.com)
+
+    git clone https://github.com/nclud/2011.beercamp.com.git
+
+<button id="toggle-presentation">Toggle presentation mode</button>
+
+# {{ page.title }}
+
+* This will become a table of contents (this text will be scraped).
+{:toc}
+
+
+
+## About BeerCamp
+
++ Fun-time party event at SXSW
++ Primary audience is web folk
++ Primary goal is just to get the word out
++ Ideal opportunity to do fun web things
+
+## The idea
+
++ Use CSS 3D transforms
++ Most browsers won't support this. Fall back to faux-3d transforms using 2D scale transforms
+
+<div id="idea-examples" class="view1">
+  <div class="pane">
+    <figure class="zoom">
+      <h3>Zoom</h3>
+      <ul>
+        <li class="section1">Section 1</li>
+        <li class="section2">Section 2</li>
+        <li class="section3">Section 3</li>
+      </ul>
+      <div class="frame"> </div>
+    </figure>
+  </div>
+
+  <div class="pane">
+    <figure class="three-d">
+      <h3>3D</h3>
+      <ul>
+        <li class="section1">Section 1</li>
+        <li class="section2">Section 2</li>
+        <li class="section3">Section 3</li>
+      </ul>
+      <div class="frame"> </div>
+    </figure>
+  </div>
+  <nav>
+    <button>Section 1</button>
+    <button>Section 2</button>
+    <button>Section 3</button>
+  </nav>
+  
+</div>
+
+## CSS scale transforms for zoom
+
++ Apply scale to each section.
++ transform value = 1 / ( scaleFactor ^ ( level - 1 ) )
+
+{% highlight css %}
+
+/* level 2 -> scale = 1 / ( 3^1 ) = 1/3 */
+#idea-examples .zoom .section2 {
+  -webkit-transform: scale(0.333);
+     -moz-transform: scale(0.333);
+      -ms-transform: scale(0.333);
+       -o-transform: scale(0.333);
+          transform: scale(0.333);
+}
+
+/* level 3 -> scale = 1 / ( 3^2 ) = 1/9 */
+#idea-examples .zoom .section3 {
+  -webkit-transform: scale(0.111);
+     -moz-transform: scale(0.111);
+      -ms-transform: scale(0.111);
+       -o-transform: scale(0.111);
+          transform: scale(0.111);
+}
+
+{% endhighlight %}
+
++ Then for each position, apply reverse scale to the container
++ transform value = scaleFactor ^ ( level - 1 )
+
+{% highlight css %}
+
+/* scale = 3^1 = 3 */
+#idea-examples.view2 .zoom ul {
+  -webkit-transform: scale(3);
+     -moz-transform: scale(3);
+      -ms-transform: scale(3);
+       -o-transform: scale(3);
+          transform: scale(3);
+}
+
+/* scale = 3^2 = 9 */
+#idea-examples.view3 .zoom ul {
+  -webkit-transform: scale(9);
+     -moz-transform: scale(9);
+      -ms-transform: scale(9);
+       -o-transform: scale(9);
+          transform: scale(9);
+}
+
+{% endhighlight %}
+
++ Sweet multi-vendor CSS3 declarations delivered with [CSS3 TextMate bundle](https://github.com/desandro/CSS3.tmbundle)
++ See also [dropshado.ws: CSS Formatting](http://dropshado.ws/post/2054719546)
+
+## Version 1: It works but...
+
++ Looks okay (sort of) in Safari
++ Terribly slow in other browsers
++ Had to remove lots of visual elements for Chrome / Firefox
++ Navigation relies on buttons
++ In general, not fun
+
+## Finding delight
+
+Design Nobility Pyramid by [Frank Chimero](http://frankchimero.com)
+
+[![Designspeaks Portland by frank-chimero, on Flickr](http://farm4.static.flickr.com/3319/4604592754_f711245c51.jpg)](http://www.flickr.com/photos/frank-sparrow/4604592754/)
+
+[nikebetterworld.com](http://nikebetterworld.com) by Ian Coyle & Duane King
+
++ Scrolling is immediately rewarding
++ Gets you _involved_
++ Makes you want to play around with the site
+
+## Now then...
+
++ Delight comes from interaction
++ Interaction -> front end developer's wheelhouse
+
+## Implementing scroll CSS
+
+See [css/style.css](https://github.com/nclud/2011.beercamp.com/blob/gh-pages/css/style.css)
+
+All content is `position: fixed`.
+
+{% highlight css %}
+
+.csstransforms #wrap { position: fixed; }
+
+{% endhighlight %}
+
+Transparent proxy element is the only thing that scrolls.
+
+{% highlight css %}
+
+.csstransforms.no-touch #scroll-proxy { height: 5400px; }
+
+{% endhighlight %}
+
+## Starting JavaScript
+
+See [js/scripts.js](https://github.com/nclud/2011.beercamp.com/blob/gh-pages/js/scripts.js)
+
++ Use constructor
++ `this` will refer to constructor's instance. Has methods and properties
+
+{% highlight javascript %}
+
+function Beercamper() {
+  // properties
+  this.scrolled = 0;
+  this.currentLevel = 0;
+  this.levels = 7;
+  this.distance3d = 1000;
+  this.levelGuide = {
+    '#intro' : 0,
+    '#featuring' : 1,
+    '#sponsorz' : 2,
+    '#flip-cup' : 3,
+    '#teams' : 4
+  };
+  
+  // which method should be used to return CSS transform styles
+  this.getScrollTransform = Modernizr.csstransforms3d ? 
+    this.getScroll3DTransform : this.getScroll2DTransform;
+  
+  // bind constructor to window.scroll event
+  if ( Modernizr.csstransforms ) {
+    window.addEventListener( 'scroll', this, false);
+  }
+  
+}
+
+// enables constructor to be used within event listener
+// like obj.addEventListener( eventName, this, false )
+Beercamper.prototype.handleEvent = function( event ) {
+  if ( this[event.type] ) {
+    this[event.type](event);
+  }
+};
+
+{% endhighlight %}
+
+### handleEvent
+
++ Binding event _without_ jQuery
++ See [Ajaxian: An alternative way to addEventListener](http://ajaxian.com/archives/an-alternative-way-to-addeventlistener)
++ Using [EventListener](http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-EventListener)
+
+> Rather than bind inline or add anonymous functions to make our object call context preserved, we can simply add an _handleEvent_ method to whatever object and pass it as EventListener.
+
+## Scrollin' on dubs
+
+1. Any scrolling now triggers `Beercamper.scroll`
+2. Scroll position `this.scrolled` is calculated as decimal (0 to 1)
+3. `this.scrolled` value is used within `transformScroll` method
+
+{% highlight javascript %}
+
+Beercamper.prototype.scroll = function( event ) {
+
+  // normalize scroll value from 0 to 1
+  this.scrolled = this.$window.scrollTop() / 
+    ( this.$document.height() - this.$window.height() );
+
+  this.transformScroll( this.scrolled );
+
+  // change current selection on nav
+  this.currentLevel = Math.round( this.scrolled * (this.levels-1) );
+  
+  if ( this.currentLevel !== this.previousLevel && this.$nav ) {
+    this.$nav.find('.current').removeClass('current');
+    if ( this.currentLevel < 5 ) {
+      this.$nav.children().eq( this.currentLevel ).addClass('current');
+    }
+    this.previousLevel = this.currentLevel;
+  }
+  
+};
+
+// where the magic happens
+// applies transform to content from position of scroll
+Beercamper.prototype.transformScroll = function( scroll ) {
+  this.$content.css( this.getScrollTransform( scroll ) );
+};
+
+{% endhighlight %}
+
+## transformScroll
+
+Back in initial `Beercamper` constructor expression, `getScrollTransform` method was set to either `getScroll3DTransform` or `getScroll2DTransform`, depending on browser's CSS 3D transform support.
+
+Both methods return the transform style that will be applied to the content's container -- `this.$content`
+
+{% highlight javascript %}
+
+Beercamper.prototype.getScroll2DTransform = function( scroll ) {
+  // 2D scale is exponential
+  var scale = Math.pow( 3, scroll * (this.levels - 1) ),
+      prop = 'scale(' + scale + ')',
+      style = {
+        WebkitTransform : prop,
+        MozTransform : prop,
+        OTransform : prop,
+        transform : prop
+      };
+  return style;
+};
+
+Beercamper.prototype.getScroll3DTransform = function( scroll ) {
+  var z = ( scroll * (this.levels - 1) * this.distance3d ),
+      style;
+  
+  style = {
+    WebkitTransform : 'translate3d( 0, 0, ' + z + 'px )'
+  };
+  return style;
+};
+
+{% endhighlight %}
+
+
+## Initalize / doc ready
+
+All that's left is to initialize the constructor.
+
+{% highlight javascript %}
+
+// BeerCamp '11 Global object
+// initialize Beercamper
+var BCXI = new Beercamper();
+
+// check if browser is iOS -> iPhone / iPad / iPod Touch
+BCXI.isIOS = !!('createTouch' in document);
+
+$(function(){
+  
+  BCXI.$content = $('#content');
+  BCXI.$nav = $('#nav');
+  
+  var $body = $('body'),
+      iOSclass = BCXI.isIOS ? 'ios' : 'no-ios';
+
+  $body.addClass( iOSclass );
+
+});
+
+{% endhighlight %}
+
+## Resolving iOS
+
++ Pages rendered in iOS don't actually 'scroll'
++ Full page is rendered, then use 'pans' over area
++ This is why `position: fixed` doesn't work in iOS
++ no scroll events are ever triggered
+
+Solution: Have iOS users use buttons for navigation
+
+Disable proxy scroll in CSS
+
+{% highlight css %}
+
+.csstransforms.no-touch .sign-up #scroll-proxy { height: 0; }
+
+{% endhighlight %}
+
+## Binding click event
+
++ Using EventListener pattern again
++ Enables me to keep everything within `Beercamper` constructor
+
+{% highlight javascript %}
+
+if ( Modernizr.csstransforms ) {
+  $('.page-nav').each(function(){
+    this.addEventListener( 'click', BCXI, false );
+  });
+}
+
+{% endhighlight %}
+
+## Click action
+
+Meanwhile, back in `Beercamper`...
+
++ Interpret clicked item
++ Determine the target level, referencing the level guide
++ Enable CSS transitions
++ set scroll position
++ Beercamper.prototype.scroll takes care of the rest
++ Or if on iOS, arbitrarily trigger transformScroll
+
+{% highlight javascript %}
+
+// handle click events
+Beercamper.prototype.click = function( event ) {
+  //  get scroll based on href of clicked nav item
+  var hash = event.target.hash || event.target.parentNode.hash,
+      targetLevel = this.levelGuide[ hash ],
+      scroll = targetLevel / (this.levels-1);
+
+  // turn on transitions and add event listeners for its end
+  if ( Modernizr.csstransitions ) {
+    this.$content.addClass('transitions-on');
+    this.$content[0].addEventListener( 'webkitTransitionEnd', this, false );
+    this.$content[0].addEventListener( 'oTransitionEnd', this, false );
+    this.$content[0].addEventListener( 'transitionend', this, false );
+  }
+
+  // set scrollbar position
+  // this will trigger window scroll event -> Beercamper.prototype.scroll
+  this.$window.scrollTop( scroll * ( this.$document.height() - this.$window.height() ) );
+
+  // iOS doesn't have scrollbar, so we have to manually trigger it
+  if ( this.isIOS ) {
+    this.transformScroll( scroll );
+  }
+
+  event.preventDefault();
+  
+};
+
+{% endhighlight %}
+
+Related CSS
+
+{% highlight css %}
+
+.csstransforms #content.transitions-on {
+  -webkit-transition: -webkit-transform 1s;
+     -moz-transition:    -moz-transform 1s;
+       -o-transition:      -o-transform 1s;
+          transition:         transform 1s;
+}
+
+{% endhighlight %}
+
+## ending CSS transitions
+
+{% highlight javascript %}
+
+Beercamper.prototype.webkitTransitionEnd = function( event ) {
+  this.transitionEnded( event );
+};
+
+Beercamper.prototype.transitionend = function( event ) {
+  this.transitionEnded( event );
+};
+
+Beercamper.prototype.oTransitionEnd = function( event ) {
+  this.transitionEnded( event );
+};
+
+// disables transition after nav click
+Beercamper.prototype.transitionEnded = function( event ) {
+  this.$content.removeClass('transitions-on');
+  this.$content[0].removeEventListener( 'webkitTransitionEnd', this, false );
+  this.$content[0].removeEventListener( 'transitionend', this, false );
+  this.$content[0].removeEventListener( 'oTransitionEnd', this, false );
+};
+
+{% endhighlight %}
+
+
+## Successes-ess-es
+
++ Users can scroll as they normally would
++ No reliance on button navigation
++ Refresh page - transformScroll automatically takes effect
++ Progressively enhanced awesome
+  - Safari / 3D-enabled Chrome get 3D transforms
+  - Chrome / Firefox / Opera get 2D Zoom
+  - IE, Camino get standard website
+
+## Failures
+
++ Everything, [according to this guy on Reddit](http://www.reddit.com/r/web_design/comments/fe2iu/crazy_javascript_wizardry_going_on_this_site/c1fayjq). (Actually, since I managed to piss someone off this much, I'm count it as a win)
++ Scrolling is in Chrome
++ iOS users can't flick-to-scroll.
++ Zoom + panning on iOS with intense 3D transforms will cause Safari to crash
++ [hash links are broken](http://2011.beercamp.com/#flip-cup)
++ Android / other mobile
++ Hack for overlay
+
+
+## GitHub Pages
+
++ Hosted on [GitHub Pages](http://pages.github.com)
++ Built with [Jekyll](https://github.com/mojombo/jekyll/wiki)
++ Automatically integrated with Git
++ Provided easy way to build and iterate through data for the Tournament teams. See [config.yml](https://github.com/nclud/2011.beercamp.com/blob/gh-pages/_config.yml)
++ Didn't have to worry about bandwidth spikes
++ Easy to edit and push changes live
+
+Also used for this Colophon
+
++ Content written in Markdown &rarr; [colophon/index.mdown](https://github.com/nclud/2011.beercamp.com/blob/gh-pages/colophon/index.mdown)
++ Syntax highlighting with Pygments
++ Table of contents [generated by Maruku](http://maruku.rubyforge.org/maruku.html#toc-generation)
+
+## Other tidbits
+
++ Start adding [humans.txt](http://humanstxt.org/). Awesome to know who made what. &rarr; [2011.beercamp.com/humans.txt](http://2011.beercamp.com/humans.txt)
++ HTML5 audio is HARD. Don't copy what I did.
++ [FontSquirrel @font-face generator](http://www.fontsquirrel.com/fontface/generator) for custom fonts (works in IE6!)
++ [Wufoo](http://wufoo.com) for form
